@@ -1,0 +1,169 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: poppins;
+}
+
+:root{
+    --white-color:white;
+
+    --black-color:#070417;
+
+    --gre-color:#B3BAC3;
+
+
+    --light-blue:#7EBEE0;
+
+    --shadow:rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}   
+
+
+.light{
+    --white-color:white;
+    --black-color:#070417;
+
+    --gre-color:#f6f6f6;
+    --light-blue:#7EBEE0;
+
+    --shadow:rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.dark{
+    --black-color:white;
+    --white-color:#070417;
+
+    --gre-color:#100D1F;
+    --light-blue:#7EBEE0;
+
+    --shadow:rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+
+/* ====================== Section Two ================================= */
+
+.SectionTow{
+    background-color: var(--gre-color);
+    margin-top: 50px;
+    padding: 50px 8%;
+}
+
+
+.SectionTow h2{
+    font-size: 20px;
+    padding-left: 30px;
+    padding-bottom: 20px;
+    font-weight: 500;
+}
+
+.SectionTwoDiv{
+    z-index: -3;
+}
+
+
+.SectionEachDivGen{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 5px;
+    padding: 0;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 70px;
+}
+.SectionTowImage{
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+}
+
+.SectionTowImage img{
+    width: 100%;
+    height: 280px;
+    padding-bottom: 50px;
+    border-radius: 5px  5px 0 0 ;
+}
+
+.SectionEachDiv{
+    position: relative;
+}
+
+
+
+.overlay{
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: 0.2s ease;
+    align-items: center;
+    color: #070417;
+    font-size: 13px;
+    align-items: center;
+}   
+
+
+.overlay p{
+    font-size: 12px;
+    color:#070417;
+    background-color: rgb(238, 238, 238);
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+
+.icons{
+    background-color:rgb(238, 238, 238) ;
+    color: #070417;
+    padding: 3px 8px;
+    width: 10%;
+    font-size: 15px;
+    border-radius: 10px;
+    text-align: center;
+    position: absolute;
+    right: 20px;
+}
+
+.SectionEachDiv:hover .overlay{
+    padding: 20px 20px;
+    padding-bottom: 30px;
+    align-items: center;
+}
+
+.SectionTwoUser{
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.SectionTwoUser p{
+    font-size: 13px;
+    padding-left: 10px;
+    color: #070417;
+
+}
+
+.circle{
+    font-size: 20px;
+}
+
+.heart{
+    position: absolute;
+    right: 30px;
+    color: #070417;
+    font-size: 13px;
+}
+
+
+
+.SectionTwoUser img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 8px;
+}
