@@ -24,7 +24,9 @@ urlpatterns = [
          name="creativeRegistration"),
 
 
-    path('api/products/', views.ProductGetCreate.as_view(), name="productCreative"),
+    path('api/products/', views.ProductGet.as_view(), name="productCreative"),
+    path('api/products/create/', views.ProductGetCreate.as_view(),
+         name="productCreative"),
 
 
     path('api/products/<str:pk>/',

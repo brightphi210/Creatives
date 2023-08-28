@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         })
 
         let data = await response.json()
-        console.log('data:', data)
+        console.log('data:', data.access)
 
         
         if (response.status === 200) {
@@ -78,12 +78,13 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
-    console.log(user)
+    // console.log(authTokens.access)
 
     const contextData = {
         user: user,
         loginUser: loginUser,
         logoutUser: logoutUser,
+        authTokens: authTokens
     }
 
     

@@ -8,7 +8,9 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
 from django_filters.rest_framework import DjangoFilterBackend
+# from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 
+from .permissions import IsCreativeUser
 from rest_framework import generics, filters, permissions
 from .serializers import *
 from .models import *
@@ -21,7 +23,6 @@ def endpoint(request):
         'endpoint': 'api/',
         'Creative List Create': 'creative/register/',
         'Creative Profile List Create': 'creative/profile/'
-
     }
     return Response(data)
 
@@ -88,19 +89,26 @@ class UserRegistrationView(generics.ListCreateAPIView):
 
 
 # ================== GET AND CREAT PRODUCT  ====================
-class ProductGetCreate(generics.ListCreateAPIView):
+class ProductGet(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    # permission_classes = [IsAuthenticated]
+
+
+class ProductGetCreate(generics.CreateAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    # permission_classes = [IsCreativeUser]
+    permission_classes = [IsAuthenticated]
 
     filter_backends = [filters.SearchFilter]
     search_fields = ['productName',
                      'cobbling__categoryName', 'funitures__categoryName']
 
     def perform_create(self, serializer):
+
         creator = self.request.user
 
-        print(creator)
+        # print(creator)
 
         # Check if the user is a creative user
         if not creator.is_creative:

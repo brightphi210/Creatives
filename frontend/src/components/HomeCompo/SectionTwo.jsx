@@ -5,6 +5,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 
+import userImage from './images/default.png'
+
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -34,7 +36,7 @@ const SectionTwo = () => {
 
 
   const url = "http://127.0.0.1:8000/api/products/"
-  // const profileUrl = "http://127.0.0.1:8000/api/creative/profile/"
+  // const profileUrl = "http://127.0.0.1:8000/api/creativeProfile/"
 
   const [products, setProducts] = useState([])
 
@@ -53,26 +55,6 @@ const SectionTwo = () => {
   useEffect(() => {
     fetchProduct();
   }, []);
-
-
-
-  // const [profiles, setProfiles] = useState([])
-
-  // const fetchProfile = () => {
-
-  //   axios.get(profileUrl).then((res) => {
-
-  //     setProfiles(res.data)
-  //     console.log(res.data[1])
-
-  //   }).catch(err => {
-  //     console.log(err)
-  //   })
-  // };
-
-  // useEffect(() => {
-  //   fetchProfile();
-  // }, []);
 
   return (
     <div>
@@ -110,15 +92,8 @@ const SectionTwo = () => {
                 </div>
 
                 <div className='SectionTwoUser'>
-                  {/* {
-                    profiles.map(profile => {
-                      if(profile.username === product.creativeAccount.username) {
-                        return (
-                          <img src={profile.profilePic} alt="" />
-                    )} } )
-                  } */}
-                  <div key={product.id}>
-                    <img  src={product.creatorProfile.profilePic} alt="" />
+                  <div >
+                    <img key={product.id} src={product.creator.profilePic || '/media/profile_pics/default.png' } alt="" />
                   </div>
                   <p key={product.id}>@{product.creator.username}</p>
                   <i class="uil uil-heart-alt heart" >30</i>

@@ -29,6 +29,9 @@ class Account(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(
         max_length=255, unique=True, blank=True, null=True)
 
+    profilePic = models.ImageField(
+        upload_to='profile_pics/', default='default.png', blank=True, null=True)
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
@@ -52,9 +55,6 @@ class Account(AbstractBaseUser, PermissionsMixin):
 class CreativeAccount(models.Model):
     account = models.ForeignKey(
         Account, on_delete=models.CASCADE, null=True, blank=True)
-
-    profilePic = models.ImageField(
-        upload_to='profile_pics/', default='default.png', blank=True, null=True)
     phoneNumber = models.CharField(max_length=255, blank=True, null=True)
     bio = models.TextField(max_length=255, blank=True, null=True)
 
@@ -136,10 +136,10 @@ class Product(models.Model):
     fashion = models.ForeignKey(
         Fashion, on_delete=models.CASCADE, null=True, blank=True)
 
-    productName = models.CharField(max_length=255, blank=True, null=True)
+    name = models.CharField(max_length=255, blank=True, null=True)
     price = models.IntegerField(blank=True, null=True)
     description = models.TextField(max_length=255, blank=True, null=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
 
     def __str__(self):
-        return self.productName
+        return self.name

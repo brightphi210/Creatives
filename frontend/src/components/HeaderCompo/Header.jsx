@@ -124,27 +124,9 @@ const Header = () => {
                   {user && <p className='hello'>@{user.username}</p>}
               </div>
 
-              
-
-
-            <i class="uil uil-list-ul openbtn" onClick={openMenu}></i>
+            {/* <i class="uil uil-list-ul openbtn" onClick={openMenu}></i> */}
+            <i class="uil uil-apps openbtn" onClick={openMenu}></i>
       </header>
-      {/* <section className='searchSection'>
-        <ul className='commonSection'>
-          <li>Commonly Search</li>
-          <li>Funiture Design</li>
-          <li>Graphics & Design</li>
-          <li>Digital Marketing</li>
-          <li>Fashio Design</li>
-        </ul>
-
-        <div className='inputSection'>
-          <i class="uil uil-search searchicon"></i>
-          <input type="text" placeholder='What Service are you looking for ?'/>
-        </div>
-      </section>
-       */}
-
     </div>
   )
 }

@@ -9,7 +9,8 @@ from .models import *
 class UserAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['name', 'email', 'username', 'password', 'is_user']
+        fields = ['name', 'email', 'username',
+                  'password', 'is_user', 'profilePic']
 
     def create(self, validated_data):
         password = validated_data.pop('password')
@@ -25,6 +26,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token = super().get_token(user)
 
         token["username"] = user.username
+        token["profilePic"] = user.profilePic.url if user.profilePic else None
 
         return token
 
@@ -32,7 +34,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
 class CreativeAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ['id', 'name', 'email', 'username', 'password', 'is_creative']
+        fields = ['id', 'name', 'email', 'username',
+                  'password', 'is_creative', 'profilePic']
 
     def create(self, validated_data):
         password = validated_data.pop('password')
@@ -106,8 +109,8 @@ class FashionSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    creator = CreativeAccountSerializer()
-    creatorProfile = CreativeProfileSerializer()
+    # creator = CreativeAccountSerializer()
+    # creatorProfile = CreativeProfileSerializer()
     # creator = serializers.ReadOnlyField(source='creator.username')
     # webAndMobile = WebMobileSerializer()
     # funitures = FurnitureSerializer()
@@ -123,7 +126,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'creatorProfile',
 
 
-            'productName',
+            'name',
             'price',
             'description',
             'image',
@@ -135,4 +138,4 @@ class ProductSerializer(serializers.ModelSerializer):
             'fashion'
         ]
         model = Product
-        # depth = 1
+        depth = 1

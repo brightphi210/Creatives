@@ -4,6 +4,7 @@ from django.dispatch import receiver
 
 from .models import *
 
+
 @receiver(post_save, sender=Account)
 def create_profile(sender, instance, created, **kwargs):
     if created:
@@ -11,7 +12,7 @@ def create_profile(sender, instance, created, **kwargs):
             # AdminProfile.objects.create(user=instance)
             CreativeAccount.objects.create(account=instance)
             print('Profile created successfully')
-            
+
         elif instance.is_user == True:
             UserAccount.objects.create(account=instance)
 
@@ -24,7 +25,7 @@ def update_profile(sender, instance, created, **kwargs):
             # AdminProfile.objects.create(user=instance)
             CreativeAccount.objects.create(account=instance)
             print('Profile created successfully')
-            
+
         elif instance.is_user == True:
             UserAccount.objects.create(account=instance)
 

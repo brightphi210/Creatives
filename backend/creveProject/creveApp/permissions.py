@@ -1,6 +1,6 @@
-# from rest_framework.permissions import BasePermission
+from rest_framework import permissions
 
 
-# class IsInstructor(BasePermission):
-#     def has_permission(self, request, view):
-#         return request.user.is_authenticated and request.user.is_creative
+class IsCreativeUser(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.user and request.user.is_authenticated and request.user.is_creative

@@ -40,6 +40,9 @@ const DashHomePart = () => {
         <div className='dashHomePartFlex'>
           <div >
 
+            <div className='backHome'>
+              <p> <i class="uil uil-apps"></i> Welcome to your dashboard</p>
+            </div>
             <div className='secttionCards'>
               <div className='reviewsSection one'>
                 <h3><i class="uil uil-archive"></i> 4</h3>
@@ -65,25 +68,38 @@ const DashHomePart = () => {
               
             </div>
 
+            <div className='workDes'>
+              <p><i class="uil uil-clipboard-notes"></i> List of works</p>
+            </div>
             <div className='dashProductDiv'>
               <div className='dashProducts'>
                 <img src={newImage1} alt="" />
-                <p>This is image one</p>
+                <p>White ulphustry chair</p>
               </div>
 
               <div className='dashProducts'>
                 <img src={newImage2} alt="" />
-                <p>This is image one</p>
+                <p>Booked Flight Mobile App</p>
               </div>
 
               <div className='dashProducts'>
                 <img src={newImage3} alt="" />
-                <p>This is image one</p>
+                <p>Mobile UI Design</p>
               </div>
 
               <div className='dashProducts'>
                 <img src={newImage4} alt="" />
-                <p>This is image one</p>
+                <p>Bakens Shoe</p>
+              </div>
+
+              <div className='dashProducts'>
+                <img src={newImage6} alt="" />
+                <p>Female clothes</p>
+              </div>
+
+              <div className='dashProducts'>
+                <img src={newImage5} alt="" />
+                <p>Set of furnitures</p>
               </div>
             </div>
 
@@ -91,9 +107,26 @@ const DashHomePart = () => {
 
             <div className='dashRecent'>
               <h3>Recent Activity</h3>
-              <div>
-                <p>This is activity one</p>
+
+              <div className='message'>
+                <p><i class="uil uil-comment-alt-message"></i> Message</p>
+                <h4> I Love your work, I need a logo</h4>
+                <p className='span2'>July 10 2023</p>
               </div>
+
+              <div className='message'>
+                <p><i class="uil uil-eye"></i> Review</p>
+                <h4> Good work, He gave me nice job</h4>
+                <p className='span2'>Oct. 04 2023</p>
+              </div>
+
+              <div className='message'>
+                <p><i class="uil uil-heart"></i> Favourite</p>
+                <h4> You just got a Favourites</h4>
+                <p className='span2'>May 30 2023</p>
+              </div>
+
+              <button >See More</button>
             </div>
         </div>
       </section>
