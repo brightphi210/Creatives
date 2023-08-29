@@ -38,7 +38,7 @@ const TopBar = () => {
           <ul className={`dashLinks ${isNavOpen ? "open" :"close"} `}>
             <Link to={'/' + 'dashboard'}><li>Dashboard</li></Link>
             <Link to={'/' + 'dashboard/create'}><li>Create</li></Link>
-            <li>Works</li>
+            <Link to={'/' + 'dashboard/work'}><li>Works</li></Link>
             <li>Reviews</li>
             <li>Messages</li>
             <button className='login' onClick={logoutUser}><i class="uil uil-arrow-down-left"></i> Logout</button>

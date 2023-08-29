@@ -1,12 +1,14 @@
 
 import React from 'react'
-import { useState, useContext} from 'react';
+import { useState, useContext, useEffect} from 'react';
+import { Link, Navigate } from'react-router-dom'
 import './CSS/dashCreatePart.css'
 import AuthContext from '../../utils/AuthContext';
 
 const DashCreatePart = () => {
 
 
+  const [isVisible, setIsVisible] = useState(true);
   let {authTokens} = useContext(AuthContext)
     //   ==================== create Api ===========================
     let url = 'http://127.0.0.1:8000/api/products/create/'
@@ -14,22 +16,18 @@ const DashCreatePart = () => {
     const [description, setDescription] = useState('');
     const [image, setImage] = useState("");
 
+    const [redirect, setRedirect] = useState(false) 
+
+    const [message, setMessage] = useState('');
+
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-      
-      // const productData = {
-      //   name,
-      //   description,
-      // };
 
       const formData = new FormData();
       formData.append('name', name);
       formData.append('description', description);
       formData.append('image', image);
-
-
-      // const authToken = localStorage.getItem("authToken.access");
 
       console.log(authTokens.access);
       try {
@@ -45,6 +43,11 @@ const DashCreatePart = () => {
         if (response.ok) {
           
           console.log("Product created successfully")
+          setMessage ("Product created successfully !!")
+          setImage("")
+          setName("")
+          setDescription("")
+          
         } 
         
         else {
@@ -53,13 +56,31 @@ const DashCreatePart = () => {
       } catch (error) {
         console.log("Exceptional error: " + error)
       }
+
+      setRedirect(true)
     };
+
+
+    
+
+    useEffect(() => {
+      if (message) {
+        const timeout = setTimeout(() => {
+          setIsVisible(false);
+        }, 2000);
+  
+        return () => {
+          clearTimeout(timeout);
+        };
+      }
+    }, [message]);
 
 
   return (
     <div>
         <section className='dashCreatePart'>
             <h2><i class="uil uil-lightbulb-alt"></i> Create Work Here</h2>
+            {isVisible && message && <p className='loginMessage'>{message}</p>}
             <div className='dashCreateDiv'>
 
               {/* ====================== form ============================ */}

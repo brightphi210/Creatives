@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authToken', JSON.stringify(data))
-            navigate('/dashboard', { state: { successMessage: 'Successfully logged in!' } })
+            navigate('/dashboard', { successMessage: 'Successfully logged in!' } )
             
 
         } else {

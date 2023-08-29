@@ -93,6 +93,18 @@ class ProductGet(generics.ListAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['webAndMobile__categoryName', 'name']
+
+
+class ProductUser(generics.ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return Product.objects.filter(creator=self.request.user)
+
 
 class ProductGetCreate(generics.CreateAPIView):
     queryset = Product.objects.all()

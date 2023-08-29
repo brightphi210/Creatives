@@ -9,6 +9,7 @@ import SignOption from "./pages/SignOption";
 
 import DashHome from "./pages/DashHome";
 import DashCreate from "./pages/DashCreate";
+import DashWork from "./pages/DashWork";
 
 import { AuthProvider } from "./utils/AuthContext";
 
@@ -26,6 +27,7 @@ function App() {
               <Route path="signup/Option" element={<SignOption />}></Route>
               <Route path="dashboard" element={<DashHome/>}></Route>
               <Route path="dashboard/create" element={<DashCreate/>}></Route>
+              <Route path="dashboard/work" element={<DashWork/>}></Route>
             </Routes>
           </AuthProvider>
         </BrowserRouter>

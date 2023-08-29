@@ -32,6 +32,8 @@ urlpatterns = [
     path('api/products/<str:pk>/',
          views.ProductGetUpdateDelete.as_view(), name="productUpdateDelete"),
 
+    path('api/creativeProducts/',
+         views.ProductUser.as_view(), name='user-products'),
 
     path('api/categories/', views.WebMobileGetCreate.as_view(),
          name="productCreative"),

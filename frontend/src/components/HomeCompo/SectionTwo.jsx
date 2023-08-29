@@ -86,7 +86,7 @@ const SectionTwo = () => {
                   </div>
 
                   <div className='overlay'>
-                    <p key={product.id}>{product.productName}</p>
+                    <p key={product.id}>{product.name}</p>
                     <i class="uil uil-heart-alt icons" ></i>
                   </div>
                 </div>

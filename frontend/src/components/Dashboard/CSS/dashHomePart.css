@@ -29,7 +29,7 @@
     width: 100%;
     height: 100%;
     background-color: white;
-    padding: 50px 8%;
+    padding: 50px 10%;
     padding-top: 200px;
 }
 
@@ -57,14 +57,15 @@
 }
 
 .reviewsSection{
-    background-color: #e2e2f7;
+    background-color: white;
     color: #070417;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
     width: 100%;
     text-align: center;
     margin: auto;
     padding: 30px 50px;
     border-radius: 10px;
+    border: #e2e2f7 solid 1px;
 }
 
 .two{
@@ -75,6 +76,22 @@
 .four{
     background-color: white;  
     color: #070417;
+}
+
+.emptyDiv{
+    margin-top: 50px;
+    justify-content: center ;
+    text-align: center;
+}
+
+.emptyImage{
+    width: 40%;
+    opacity: 50%;
+}
+
+.emptyMessage{
+    font-size: 20px;
+    color: grey;
 }
 
 
@@ -126,12 +143,12 @@
 /* ================= Recent activity ================= */
 
 .dashRecent{
-    background-color: #0e111b;
-    color: white;
+    background-color: white;
+    color: #070417;
     height: 55vh;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border: #e2e2f7 solid 1px;
 }
 
 
@@ -144,7 +161,7 @@
 .message{
     margin-top: 10px;
     padding: 10px 30px;
-    background-color: #171b25;
+    background-color: rgb(250, 250, 250);
     border-radius: 10px;
 }
 
@@ -157,7 +174,8 @@
 
 .message h4{
     font-size: 15px;
-    color: #e2e2f7;
+    color:#0e111b;
+    font-weight: 500;
 }
 
 

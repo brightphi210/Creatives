@@ -5,15 +5,18 @@ import './CSS/dashHomePart.css'
 import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import newImage1 from './images/861.jpg'
-import newImage2 from './images/862.jpg'
-import newImage3 from './images/863.jpg'
-import newImage4 from './images/864.jpg'
-import newImage5 from './images/865.jpg'
-import newImage6 from './images/866.jpg'
+import emptyImage from './images/empty.jpg'
+
+
+
+import AuthContext from '../../utils/AuthContext';
 
 
 const DashHomePart = () => {
+
+  let {authTokens} = useContext(AuthContext)
+
+
   const location = useLocation();
   const state = location.state || {};
   const successMessage = state.successMessage;
@@ -33,6 +36,31 @@ const DashHomePart = () => {
       };
     }
   }, [successMessage]);
+
+
+  const [creativeProducts, setCreativeProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchCreativeProduct = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/creativeProducts/', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${authTokens.access}`
+            // Add any authentication headers if required
+          },
+        });
+
+        const data = await response.json();
+        setCreativeProducts(data);
+      } catch (error) {
+        console.error('Error fetching instructor courses:', error);
+      }
+    };
+
+    fetchCreativeProduct();
+  }, []);
   return (
     <div>
       <section className='dashHomePart'>
@@ -44,10 +72,13 @@ const DashHomePart = () => {
               <p> <i class="uil uil-apps"></i> Welcome to your dashboard</p>
             </div>
             <div className='secttionCards'>
+
+            
               <div className='reviewsSection one'>
-                <h3><i class="uil uil-archive"></i> 4</h3>
+                <h3><i class="uil uil-archive"></i> {creativeProducts.length}</h3>
                 <p>Products</p>
               </div>
+            
 
 
               <div className='reviewsSection two'>
@@ -71,38 +102,24 @@ const DashHomePart = () => {
             <div className='workDes'>
               <p><i class="uil uil-clipboard-notes"></i> List of works</p>
             </div>
-            <div className='dashProductDiv'>
-              <div className='dashProducts'>
-                <img src={newImage1} alt="" />
-                <p>White ulphustry chair</p>
-              </div>
-
-              <div className='dashProducts'>
-                <img src={newImage2} alt="" />
-                <p>Booked Flight Mobile App</p>
-              </div>
-
-              <div className='dashProducts'>
-                <img src={newImage3} alt="" />
-                <p>Mobile UI Design</p>
-              </div>
-
-              <div className='dashProducts'>
-                <img src={newImage4} alt="" />
-                <p>Bakens Shoe</p>
-              </div>
-
-              <div className='dashProducts'>
-                <img src={newImage6} alt="" />
-                <p>Female clothes</p>
-              </div>
-
-              <div className='dashProducts'>
-                <img src={newImage5} alt="" />
-                <p>Set of furnitures</p>
-              </div>
+            { creativeProducts.length > 0 ? (
+              <div className='dashProductDiv'>
+                {creativeProducts.map(product => (
+                    <div className='dashProducts'>
+                      <img key={product.id} src={product.image} alt="" />
+                      <p key={product.id}>{product.name}</p>
+                    </div>
+                  ))}
             </div>
+            ):(
+              <div className='emptyDiv'>
+                <img className='emptyImage' src={emptyImage} alt="" />
+                <p className='emptyMessage'>No creative products available.</p>
+              </div>
+            )
+            }
 
+            
           </div>
 
             <div className='dashRecent'>
